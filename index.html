@@ -1,11 +1,22 @@
 <html>
   <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.6.22/dist/css/uikit.min.css" />
     <script src="scripts.js"></script>
   </head>
   <body>
     <center>
-      <p><strong>IP Address:</strong> <span id="ip-address">loading...</span></p>
-      <p><strong>Operating system:</strong> <span id="os">loading...</span></p>
+      <div class="uk-child-width-1-2@s uk-grid-match uk-margin-top" uk-grid>
+        <div class="uk-child-width-1-2">
+          <div class="uk-card uk-card-secondary uk-card-small uk-card-body uk-card-hover uk-margin">
+            <h3 class="uk-card-title">IP Address</h3>
+            <p><span id="ip-address">loading...</span></p>
+          </div>
+          <div class="uk-card uk-card-secondary uk-card-small uk-card-body uk-card-hover uk-margin">
+            <h3 class="uk-card-title">Operating system</h3>
+            <p><span id="os">loading...</span></p>
+          </div>
+        </div>
+      </div>
       <p id="uagent" style="visibility: hidden;"><strong>UserAgent:</strong> <span id="ua">Loading...</span>
     </center>
   </body>

@@ -1,9 +1,12 @@
 window.onload = function() {
   // Get the IP address from jsontest
   const ipAddressElement = document.getElementById("ip-address");
-  fetch("http://ip.jsontest.com/")
+  fetch("https://ipapi.co/json/")
     .then(response => response.json())
-    .then(data => ipAddressElement.textContent = data["ip"])
+    .then(data => {
+      console.log(`ipapi response: ${JSON.stringify(data)}`);
+      ipAddressElement.textContent = data["ip"]
+     })
     .catch(error => ipAddressElement.textContent = `Error: ${error}`);
 
   // Now display the user agent
