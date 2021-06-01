@@ -1,11 +1,11 @@
 window.onload = function() {
   // Get the IP address from jsontest
   const ipAddressElement = document.getElementById("ip-address");
-  fetch("https://ipapi.co/json/")
+  fetch("https://api.dougdragon.com/ip/")
     .then(response => response.json())
     .then(data => {
       console.log(`ipapi response: ${JSON.stringify(data)}`);
-      ipAddressElement.textContent = data["ip"]
+      ipAddressElement.textContent = data["ipAddress"]
      })
     .catch(error => ipAddressElement.textContent = `Error: ${error}`);
 
