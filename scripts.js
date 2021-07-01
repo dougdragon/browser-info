@@ -6,6 +6,11 @@ window.onload = function() {
     .then(data => {
       console.log(`API response: ${JSON.stringify(data)}`);
       ipAddressElement.textContent = data["ipAddress"]
+
+      // add copy link
+      const copyLinkContent = document.createElement("p");
+      copyLinkContent.innerHTML = `<a id="copyIpLink" onclick="copyIpaddress()">Copy</a>`;
+      ipAddressElement.parentNode.insertBefore(copyLinkContent, ipAddressElement.nextSibling);
      })
     .catch(error => ipAddressElement.textContent = `Error: ${error}`);
 
@@ -34,4 +39,37 @@ window.onload = function() {
     document.getElementById("uagent").style.visibility = "visible";
     document.getElementById("ua").textContent = userAgent;
   }
+}
+
+const copyIpaddress = () => {
+  const textToCopy = document.getElementById("ip-address").textContent;
+    if (window.clipboardData && window.clipboardData.setData) {
+        // IE-specific code path to prevent textarea being shown while dialog is visible.
+        window.clipboardData.setData("Text", textToCopy);
+        console.log("copy success");
+        return;
+
+    }
+    else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = textToCopy;
+        textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in Edge.
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand("copy");  // Security exception may be thrown by some browsers.
+          document.getElementById("copyIpLink").innerText = "Copied!";
+          setTimeout(() => {
+            document.getElementById("copyIpLink").innerText = "Copy";
+          }, 2000);
+            return;
+        }
+        catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return false;
+        }
+        finally {
+            document.body.removeChild(textarea);
+        }
+    }
 }
