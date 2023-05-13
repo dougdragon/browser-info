@@ -5,8 +5,8 @@ window.onload = function() {
     .then(response => response.json())
     .then(data => {
       console.log(`API response: ${JSON.stringify(data)}`);
-      ipAddressElement.textContent = data["ipAddress"]
-
+      document.getElementById("spinner").style.display = "none";
+      ipAddressElement.textContent = data["ipAddress"];
       // add copy link
       const copyLinkContent = document.createElement("p");
       copyLinkContent.innerHTML = `<a id="copyIpLink" onclick="copyIpaddress()">Copy</a>`;
@@ -18,10 +18,10 @@ window.onload = function() {
   const userAgent = navigator.userAgent;
   console.log(`UserAgent: ${userAgent}`);
   if (userAgent.includes("Macintosh")) {
-    // there"s probably a better way to do this
+    // there's probably a better way to do this
     document.getElementById("os").textContent = "Mac OS";
   } else if (userAgent.includes("NT 10.0")) {
-    document.getElementById("os").textContent = "Windows 10";
+    document.getElementById("os").textContent = "Windows 10+";
   } else if (userAgent.includes("NT 6.3")) {
     document.getElementById("os").textContent = "Windows 8.1";
   } else if (userAgent.includes("NT 6.2")) {
@@ -48,7 +48,6 @@ const copyIpaddress = () => {
         window.clipboardData.setData("Text", textToCopy);
         console.log("copy success");
         return;
-
     }
     else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
         var textarea = document.createElement("textarea");
