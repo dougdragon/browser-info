@@ -1,4 +1,4 @@
-<html>
+<html class="uk-height-1-1">
   <head>
     <meta name="description" content="A simple page that displays IP Address and Operating System">
     <meta name="keywords" content="ip address, os, operating system, ip">
@@ -8,8 +8,8 @@
     <script src="https://assets.dougdragon.com/uikit.js"></script>
     <script src="scripts.js"></script>
   </head>
-  <body>
-    <div style="text-align: center;">
+  <body class="uk-height-1-1">
+    <div class="uk-container-center">
       <noscript>
         <h1 class="uk-heading-medium">Note</h1>
         <p class="uk-text-large">
@@ -17,15 +17,15 @@
         </p>
       </noscript>
       <div class="uk-child-width-1-2@s uk-grid-match uk-margin-top" uk-grid>
-        <div class="uk-child-width-1-2">
-          <div id="ip-block" class="uk-card uk-card-secondary uk-card-small uk-card-body uk-card-hover uk-margin">
+        <div class="uk-child-width-1-2 uk-align-center">
+          <div id="ip-block" class="uk-card uk-card-secondary uk-card-small uk-card-body uk-card-hover uk-margin uk-text-center">
             <h3 class="uk-card-title">IP Address</h3>
             <p>
               <div id="spinner" class="uk-icon uk-spinner" uk-spinner="ratio: 0.5"></div>
               <span id="ip-address"></span>
             </p>
           </div>
-          <div class="uk-card uk-card-secondary uk-card-small uk-card-body uk-card-hover uk-margin">
+          <div class="uk-card uk-card-secondary uk-card-small uk-card-body uk-card-hover uk-margin uk-text-center">
             <h3 class="uk-card-title">Operating system</h3>
             <p><span id="os">loading...</span></p>
           </div>
