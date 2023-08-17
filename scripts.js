@@ -7,6 +7,7 @@ window.onload = function() {
       console.log(`API response: ${JSON.stringify(data)}`);
       document.getElementById("spinner").style.display = "none";
       ipAddressElement.textContent = data["ipAddress"];
+ 
       // add copy link
       const copyLinkContent = document.createElement("p");
       copyLinkContent.innerHTML = `<a id="copyIpLink" onclick="copyIpaddress()">Copy</a>`;

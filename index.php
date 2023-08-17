@@ -32,6 +32,10 @@
         </div>
       </div>
       <p id="uagent" style="visibility: hidden;"><strong>UserAgent:</strong> <span id="ua">Loading...</span>
+      <?php
+        $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
+        echo "<script>console.log(\"hostname: " . $hostname . "\");</script>";
+      ?>
     </div>
   </body>
 </html>
