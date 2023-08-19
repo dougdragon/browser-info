@@ -1,16 +1,35 @@
 window.onload = function() {
-  // Get the IP address
+  let ipAddress;
+  // Get the IP address & hostname
   const ipAddressElement = document.getElementById("ip-address");
   fetch("https://api.dougdragon.com/ip/")
     .then(response => response.json())
     .then(data => {
+      ipAddress = data['ipAddress'];
       console.log(`API response: ${JSON.stringify(data)}`);
       document.getElementById("spinner").style.display = "none";
       ipAddressElement.textContent = data["ipAddress"];
-      document.getElementById("hostname").style.visibility = "visible";
+      document.getElementById("hostname-span").textContent = data["hostname"];
+      document.getElementById("hostname-div").style.visibility = "visible";
+
+      const geoUrl = `https://api.dougdragon.com/geolocation/?ip=${ipAddress}`;
+      fetch(geoUrl)
+        .then(resp => resp.json())
+        .then(geoData => {
+          if (geoData.message) {
+            console.log("There was a problem with the geolocation API: ", geoData.message);
+          } else {
+            console.log(`Location: ${geoData['city']}, ${geoData['state_prov']} (${geoData['country_name']})`);
+            console.log(`Company: ${geoData['organization']}`);
+            document.getElementById('geo1').textContent = `${geoData['city']} ${geoData['state_prov']}`;
+            document.getElementById("geo2").textContent = `${geoData['organization']}`;
+          }
+        })
+        .catch(err => console.log(`There was an error fetching: ${err}`));
  
       // add copy link
-      const copyLinkContent = document.createElement("p");
+      const copyLinkContent = document.createElement("span");
+      copyLinkContent.className = "uk-margin-left";
       copyLinkContent.innerHTML = `<a id="copyIpLink" onclick="copyIpaddress()">Copy</a>`;
       ipAddressElement.parentNode.insertBefore(copyLinkContent, ipAddressElement.nextSibling);
      })
