@@ -23,9 +23,12 @@
             <p>
               <div id="spinner" class="uk-icon uk-spinner" uk-spinner="ratio: 0.5"></div>
               <span id="ip-address"></span>
-              <div id="hostname" style="visibility: hidden;">
+              <div id="hostname-div" style="visibility: hidden;">
                 <h4 class="uk-margin-top">Hostname</h4>
-                <span id="hostname"><?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']); ?></span>
+                <span id="hostname-span"></span>
+                <h4 class="uk-margin-small-top">Geolocation info</h4>
+                  <div id="geo1"></div>
+                  <div id="geo2"></div>
               </div>
             </p>
           </div>
@@ -36,10 +39,6 @@
         </div>
       </div>
       <p id="uagent" style="visibility: hidden;"><strong>UserAgent:</strong> <span id="ua">Loading...</span>
-      <?php
-        $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
-        echo "<script>console.log(\"hostname: " . $hostname . "\");</script>";
-      ?>
     </div>
   </body>
 </html>
