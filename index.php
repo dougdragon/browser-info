@@ -26,6 +26,7 @@
               <div id="hostname" style="visibility: hidden;">
                 <h4 class="uk-margin-top">Hostname</h4>
                 <span id="hostname"><?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']); ?></span>
+                <div id="geo"></div>
               </div>
             </p>
           </div>

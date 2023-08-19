@@ -1,12 +1,28 @@
 window.onload = function() {
+  let ipAddress;
   // Get the IP address
   const ipAddressElement = document.getElementById("ip-address");
   fetch("https://api.dougdragon.com/ip/")
     .then(response => response.json())
     .then(data => {
+      ipAddress = data['ipAddress'];
       console.log(`API response: ${JSON.stringify(data)}`);
       document.getElementById("spinner").style.display = "none";
       ipAddressElement.textContent = data["ipAddress"];
+
+      const geoUrl = `https://api.ipgeolocation.io/ipgeo?ipAddress=${ipAddress}&apiKey=45ef2bbe0aca4a4bb67f55a53a9b9561`;
+      fetch(geoUrl)
+        .then(resp => resp.json())
+        .then(geoData => {
+          if (geoData.message) {
+            console.log("There was a problem with the geo API: ", geoData.message);
+          } else {
+            console.log(`Location: ${geoData['city']}, ${geoData['state_prov']} (${geoData['country_name']})`);
+            console.log(`Company: ${geoData['organization']}`);
+            document.getElementById("geo").textContent = geoData['organization'];
+          }
+        })
+        .catch(err => console.log(err))
       document.getElementById("hostname").style.visibility = "visible";
  
       // add copy link
