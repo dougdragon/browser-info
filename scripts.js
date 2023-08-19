@@ -7,6 +7,7 @@ window.onload = function() {
       console.log(`API response: ${JSON.stringify(data)}`);
       document.getElementById("spinner").style.display = "none";
       ipAddressElement.textContent = data["ipAddress"];
+      document.getElementById("hostname").style.visibility = "visible";
  
       // add copy link
       const copyLinkContent = document.createElement("p");

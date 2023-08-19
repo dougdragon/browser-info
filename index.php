@@ -23,6 +23,10 @@
             <p>
               <div id="spinner" class="uk-icon uk-spinner" uk-spinner="ratio: 0.5"></div>
               <span id="ip-address"></span>
+              <div id="hostname" style="visibility: hidden;">
+                <h4>Hostname</h4>
+                <span id="hostname"><?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']); ?></span>
+              </div>
             </p>
           </div>
           <div class="uk-card uk-card-secondary uk-card-small uk-card-body uk-card-hover uk-margin uk-text-center">
