@@ -10,7 +10,8 @@ window.onload = function() {
       document.getElementById("hostname").style.visibility = "visible";
  
       // add copy link
-      const copyLinkContent = document.createElement("p");
+      const copyLinkContent = document.createElement("span");
+      copyLinkContent.className = "uk-margin-left";
       copyLinkContent.innerHTML = `<a id="copyIpLink" onclick="copyIpaddress()">Copy</a>`;
       ipAddressElement.parentNode.insertBefore(copyLinkContent, ipAddressElement.nextSibling);
      })

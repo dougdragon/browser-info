@@ -24,7 +24,7 @@
               <div id="spinner" class="uk-icon uk-spinner" uk-spinner="ratio: 0.5"></div>
               <span id="ip-address"></span>
               <div id="hostname" style="visibility: hidden;">
-                <h4>Hostname</h4>
+                <h4 class="uk-margin-top">Hostname</h4>
                 <span id="hostname"><?php echo gethostbyaddr($_SERVER['REMOTE_ADDR']); ?></span>
               </div>
             </p>
