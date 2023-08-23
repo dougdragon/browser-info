@@ -12,7 +12,7 @@ window.onload = function() {
       document.getElementById("hostname-span").textContent = data["hostname"];
       document.getElementById("hostname-div").style.visibility = "visible";
 
-      const geoUrl = `https://api.ipgeolocation.io/ipgeo?ipAddress=${ipAddress}&apiKey=45ef2bbe0aca4a4bb67f55a53a9b9561`;
+      const geoUrl = `https://api.dougdragon.com/geolocation/?ip=${ipAddress}`;
       fetch(geoUrl)
         .then(resp => resp.json())
         .then(geoData => {
@@ -25,7 +25,7 @@ window.onload = function() {
             document.getElementById("geo2").textContent = `${geoData['organization']}`;
           }
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(`There was an error fetching: ${err}`));
  
       // add copy link
       const copyLinkContent = document.createElement("span");
