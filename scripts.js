@@ -9,7 +9,7 @@ window.onload = function() {
       console.log(`API response: ${JSON.stringify(data)}`);
       document.getElementById("spinner").style.display = "none";
       ipAddressElement.textContent = data["ipAddress"];
-      document.getElementById("hostname-span").textContent = data["hostname"];
+      document.getElementById("hostname-span").textContent = hostnameDisplay(data["hostname"]);
       document.getElementById("hostname-div").style.visibility = "visible";
 
       const geoUrl = `https://api.dougdragon.com/geolocation/?ip=${ipAddress}`;
@@ -21,6 +21,7 @@ window.onload = function() {
           } else {
             console.log(`Location: ${geoData['city']}, ${geoData['state_prov']} (${geoData['country_name']})`);
             console.log(`Company: ${geoData['organization']}`);
+            document.getElementById("geo-spinner").style.display = "none";
             document.getElementById('geo1').textContent = `${geoData['city']} ${geoData['state_prov']}`;
             document.getElementById("geo2").textContent = `${geoData['organization']}`;
           }
@@ -92,4 +93,18 @@ const copyIpaddress = () => {
             document.body.removeChild(textarea);
         }
     }
+}
+
+const hostnameDisplay = (hostname) => {            
+  const regexString = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}.\b/
+  const regex = new RegExp(regexString);
+  if (regex.test(hostname)) {
+      newString = hostname.replace(regexString, "");
+  }
+  
+  if (newString) {
+      return newString;
+  } else {
+      return hostname;
+  }
 }
