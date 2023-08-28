@@ -95,7 +95,8 @@ const copyIpaddress = () => {
     }
 }
 
-const hostnameDisplay = (hostname) => {            
+const hostnameDisplay = (hostname) => {
+  let newString;            
   const regexString = /\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}.\b/
   const regex = new RegExp(regexString);
   if (regex.test(hostname)) {
